@@ -575,7 +575,7 @@ def generate(batch_size, model, spacegroup, top_p=1.0, temperature=1.0):
 
         # (5) Z
         h_z = model(data)
-        h_z = h_z[:, -3, :3 * model.hparams.Kx]
+        h_z = h_z[:, -2, :3 * model.hparams.Kx]
         z = sample_x(h_z, model.hparams.Kx, top_p, temperature, spacegroup.size()[0])
 
         # project to the first WP
@@ -591,6 +591,8 @@ def generate(batch_size, model, spacegroup, top_p=1.0, temperature=1.0):
     A = data['atom_type']
     num_sites = torch.sum(A != 0, axis=1)
     num_atoms = torch.sum(M, axis=1)
+
+    assert torch.max(num_sites) < model.hparams.n_max, f"Assertion failed: max value {torch.max(num_sites)} is not less than {model.hparams.n_max}"
 
     trueL = L[torch.arange(batch_size, device=L.device), num_sites, :]
     l_logit, mu, sigma = torch.split(trueL,
