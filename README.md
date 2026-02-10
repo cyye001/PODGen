@@ -1,7 +1,9 @@
 <div align="center">
 	<img align="middle" src="src/podlogo.png" width="400" alt="logo"/>
-  <h2> Materials discovery acceleration by using condition generative methodology</h2> 
+  <h2> Materials discovery acceleration by using conditional generative methodology</h2> 
 </div>
+
+paper: [Materials discovery acceleration by using conditional generative methodology](https://www.nature.com/articles/s41524-025-01930-w)
 
 arXiv: [https://arxiv.org/abs/2505.00076](https://arxiv.org/abs/2505.00076)
 
